@@ -795,3 +795,35 @@ async function updateMessage() {
 }
 
 client.login(process.env.TOKEN);
+const {
+    SlashCommandBuilder
+} = require("discord.js");
+
+const command = new SlashCommandBuilder()
+    .setName("createevent")
+    .setDescription("Create an MTG sign-up event")
+
+    .addStringOption(option =>
+        option
+            .setName("format")
+            .setDescription("Choose the MTG format")
+            .setRequired(true)
+            .addChoices(
+                { name: "Commander", value: "Commander" },
+                { name: "Kingdom", value: "Kingdom" }
+            ))
+
+    .addStringOption(option =>
+        option
+            .setName("day")
+            .setDescription("Choose the day")
+            .setRequired(true)
+            .addChoices(
+                { name: "Monday", value: "Monday" },
+                { name: "Tuesday", value: "Tuesday" },
+                { name: "Wednesday", value: "Wednesday" },
+                { name: "Thursday", value: "Thursday" },
+                { name: "Friday", value: "Friday" },
+                { name: "Saturday", value: "Saturday" },
+                { name: "Sunday", value: "Sunday" }
+            ));
